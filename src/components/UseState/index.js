@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const UseState = () => {
+const UseState = ({ name }) => {
+    const [error, setError] = useState(false);
+    const onClickHandle = () => {
+        setError(!error);
+    };
     return (
         <div>
             <h2>
-                Delete UseState
+                Delete {name}
             </h2>
             <p>Please, write the security code.</p>
+            {error && (
+                <p>The code was wrong</p>
+            )}
             <input placeholder="Security Code" />
-            <button>Check</button>
+            <button
+                onClick={onClickHandle}
+            >
+                Check
+            </button>
         </div>
     );
 };

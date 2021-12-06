@@ -10,14 +10,10 @@ const UseState = ({ name }) => {
   };
 
   useEffect(() => {
-    console.log("Begin the Effect");
     loading &&
       setTimeout(() => {
-        console.log("Making the validation");
         setLoading(false);
-        console.log("Ending the validation");
       }, FAKE_LOADING_TIMER);
-    console.log("Ending the Effect");
   }, [loading]);
   return (
     <div>

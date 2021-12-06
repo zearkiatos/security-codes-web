@@ -1,6 +1,12 @@
 ## Description
 This is a reactjs ⚛️ web application to improvement the knowledge about the state management. This project is about a web application to management security 🔐 codes.
 
+![Github](https://github.com/zearkiatos/security-codes-web/actions/workflows/action.yml/badge.svg)
+
+## Project link
+
+Github: [https://zearkiatos.github.io/security-codes-web/](https://zearkiatos.github.io/security-codes-web/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

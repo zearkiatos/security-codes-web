@@ -16,6 +16,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "docker:dev": "docker-compose -f docker-compose.develop.yml up --build",
+    "docker:prod": "docker-compose up --build",
     "start:watch": "nodemon start",
     "dev": "npm run start:watch",
     "build:ci": "CI=false npm run build"

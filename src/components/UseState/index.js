@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import config from '../../config';
+import config from "../../config";
 
 const FAKE_LOADING_TIMER = 3000;
 
 const UseState = ({ name }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -17,8 +17,13 @@ const UseState = ({ name }) => {
   };
 
   useEffect(() => {
+    setError(false);
+  }, [value]);
+
+  useEffect(() => {
     loading &&
       setTimeout(() => {
+        value !== config.SECURITY_CODE && setError(true);
         setLoading(false);
       }, FAKE_LOADING_TIMER);
   }, [loading]);

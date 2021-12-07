@@ -1,5 +1,6 @@
 const config = {
     NODE_ENV: process.env.NODE_ENV,
+    SECURITY_CODE: process.env.SECURITY_CODE,
     FIREBASE: {
       API_KEY: process.env.FIREBASE_API_KEY,
       AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,

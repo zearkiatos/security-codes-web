@@ -9,16 +9,13 @@ const UseState = ({ name }) => {
   const [loading, setLoading] = useState(false);
 
   const onClickHandle = () => {
+    setError(false);
     setLoading(true);
   };
 
   const onChangeHandle = (event) => {
     setValue(event.target.value);
   };
-
-  useEffect(() => {
-    setError(false);
-  }, [value]);
 
   useEffect(() => {
     loading &&
@@ -31,7 +28,7 @@ const UseState = ({ name }) => {
     <div>
       <h2>Delete {name}</h2>
       <p>Please, write the security code.</p>
-      {error && <p>The code was wrong</p>}
+      {error && !loading && <p>The code was wrong</p>}
       {loading && <p>Loading...</p>}
       <input
         placeholder="Security Code"

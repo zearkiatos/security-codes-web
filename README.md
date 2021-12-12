@@ -10,6 +10,10 @@ Github: [https://zearkiatos.github.io/security-codes-web/](https://zearkiatos.gi
 
 Gitlab 🦊: [https://caprilespe.gitlab.io/security-codes-web/](https://caprilespe.gitlab.io/security-codes-web/)
 
+Firebase 🔥: [https://security-codes-web.web.app/](https://security-codes-web.web.app/)
+
+Vercel: [https://security-codes-web.vercel.app/](https://security-codes-web.vercel.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

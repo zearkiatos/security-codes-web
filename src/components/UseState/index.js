@@ -4,35 +4,55 @@ import config from "../../config";
 const FAKE_LOADING_TIMER = 3000;
 
 const UseState = ({ name }) => {
-  const [value, setValue] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [state, setState] = useState({
+    value: "",
+    error: false,
+    loading: false
+  });
 
   const onClickHandle = () => {
-    setError(false);
-    setLoading(true);
+    setState({
+      ...state,
+      error: false,
+      loading: true
+    });
   };
 
   const onChangeHandle = (event) => {
-    setValue(event.target.value);
+    setState({
+      ...state,
+      value: event.target.value
+    });
   };
 
   useEffect(() => {
-    loading &&
+    state.loading &&
       setTimeout(() => {
-        value !== config.SECURITY_CODE && setError(true);
-        setLoading(false);
+        console.log(state);
+        if (state.value !== config.SECURITY_CODE) {
+          setState({
+            ...state,
+            error: true,
+            loading: false
+          });
+        } else {
+          setState({
+            ...state,
+            error: false,
+            loading: false
+          });
+        }
       }, FAKE_LOADING_TIMER);
-  }, [loading]);
+  }, [state.loading]);
   return (
     <div>
       <h2>Delete {name}</h2>
       <p>Please, write the security code.</p>
-      {error && !loading && <p>The code was wrong</p>}
-      {loading && <p>Loading...</p>}
+      {state.error && <p>The code was wrong</p>}
+      {state.loading && <p>Loading...</p>}
       <input
         placeholder="Security Code"
-        value={value}
+        value={state.value}
         onChange={onChangeHandle}
       />
       <button onClick={onClickHandle}>Check</button>

@@ -14,6 +14,8 @@ Firebase 🔥: [https://security-codes-web.web.app/](https://security-codes-web.
 
 Vercel: [https://security-codes-web.vercel.app/](https://security-codes-web.vercel.app/)
 
+Netlify: [https://security-codes-web.vercel.app/](https://security-codes-web.vercel.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

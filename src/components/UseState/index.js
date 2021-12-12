@@ -27,22 +27,30 @@ const UseState = ({ name }) => {
     });
   };
 
+  const onConfirm = () => {
+    setState({
+      ...state,
+      error: false,
+      loading: false,
+      confirmed: true
+    });
+  };
+
+  const onError = () => {
+    setState({
+      ...state,
+      error: true,
+      loading: false
+    });
+  };
+
   useEffect(() => {
     state.loading &&
       setTimeout(() => {
-        if (state.value !== config.SECURITY_CODE) {
-          setState({
-            ...state,
-            error: true,
-            loading: false
-          });
+        if (state.value === config.SECURITY_CODE) {
+          onConfirm();
         } else {
-          setState({
-            ...state,
-            error: false,
-            loading: false,
-            confirmed: true
-          });
+          onError();
         }
       }, FAKE_LOADING_TIMER);
   }, [state.loading]);

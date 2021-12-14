@@ -1,6 +1,10 @@
 const reducerTypes = {
     ERROR: 'ERROR',
-    CHECK: 'CHECK'
+    CHECK: 'CHECK',
+    CONFIRM: 'CONFIRM',
+    CHANGE: 'CHANGE',
+    DELETE: 'DELETE',
+    RESET: 'RESET'
 };
 
 export default reducerTypes;

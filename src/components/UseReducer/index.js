@@ -1,5 +1,5 @@
 import React, { Fragment, useReducer, useEffect } from "react";
-import { REDUCER_TYPES } from "../../types";
+import { ACTION_TYPES } from "../../types";
 import config from "../../config";
 const INITIAL_STATE = {
   value: "",
@@ -10,33 +10,33 @@ const INITIAL_STATE = {
 };
 
 const reducerObject = (state = INITIAL_STATE, payload = {}) => ({
-  [REDUCER_TYPES.ERROR]: {
+  [ACTION_TYPES.ERROR]: {
     ...state,
     error: true,
     loading: false
   },
-  [REDUCER_TYPES.CHECK]: {
+  [ACTION_TYPES.CHECK]: {
     ...state,
     loading: true
   },
-  [REDUCER_TYPES.CONFIRM]: {
+  [ACTION_TYPES.CONFIRM]: {
     ...state,
     error: false,
     loading: false,
     confirmed: true
   },
-  [REDUCER_TYPES.DELETE]: {
+  [ACTION_TYPES.DELETE]: {
     ...state,
     confirmed: false,
     deleted: true
   },
-  [REDUCER_TYPES.RESET]: {
+  [ACTION_TYPES.RESET]: {
     ...state,
     confirmed: false,
     deleted: false,
     value: ""
   },
-  [REDUCER_TYPES.CHANGE]: {
+  [ACTION_TYPES.CHANGE]: {
     ...state,
     value: payload.value
   }
@@ -55,32 +55,42 @@ const FAKE_LOADING_TIMER = 3000;
 const UseReducer = ({ name }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
-  const onClickHandle = () => {
+  const onCheck = () =>
     dispatch({
-      type: REDUCER_TYPES.CHECK
+      type: ACTION_TYPES.CHECK
     });
-  };
 
-  const onChangeHandle = (event) => {
+  const onChange = (value) =>
     dispatch({
-      type: REDUCER_TYPES.CHANGE,
+      type: ACTION_TYPES.CHANGE,
       payload: {
-        value: event.target.value
+        value
       }
     });
-  };
 
-  const onConfirm = () => {
+  const onDelete = () =>
     dispatch({
-      type: REDUCER_TYPES.CONFIRM
+      type: ACTION_TYPES.DELETE
     });
-  };
 
-  const onError = () => {
+  const onReset = () =>
     dispatch({
-      type: REDUCER_TYPES.ERROR
+      type: ACTION_TYPES.RESET
     });
-  };
+
+  const onConfirm = () =>
+    dispatch({
+      type: ACTION_TYPES.CONFIRM
+    });
+
+  const onError = () =>
+    dispatch({
+      type: ACTION_TYPES.ERROR
+    });
+
+  const onClickHandle = () => onCheck();
+
+  const onChangeHandle = ({ target: { value } }) => onChange(value);
 
   useEffect(() => {
     state.loading &&
@@ -110,15 +120,11 @@ const UseReducer = ({ name }) => {
     );
   } else if (state.confirmed) {
     const onConfirmHandler = () => {
-      dispatch({
-        type: REDUCER_TYPES.DELETE
-      });
+      onDelete();
     };
 
     const onUnconfirmHandler = () => {
-      dispatch({
-        type: REDUCER_TYPES.RESET
-      });
+      onReset();
     };
     return (
       <Fragment>
@@ -132,11 +138,7 @@ const UseReducer = ({ name }) => {
       </Fragment>
     );
   } else {
-    const onResetHandler = () => {
-      dispatch({
-        type: REDUCER_TYPES.RESET
-      });
-    };
+    const onResetHandler = () => onReset();
     return (
       <Fragment>
         <p>Deleted Successfully</p>

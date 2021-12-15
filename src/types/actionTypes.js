@@ -1,4 +1,4 @@
-const reducerTypes = {
+const actionTypes = {
     ERROR: 'ERROR',
     CHECK: 'CHECK',
     CONFIRM: 'CONFIRM',
@@ -7,4 +7,4 @@ const reducerTypes = {
     RESET: 'RESET'
 };
 
-export default reducerTypes;
+export default actionTypes;

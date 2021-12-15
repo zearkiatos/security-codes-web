@@ -1,5 +1,5 @@
-import REDUCER_TYPES from './reducerTypes';
+import ACTION_TYPES from './actionTypes';
 
 export {
-    REDUCER_TYPES
-}
+    ACTION_TYPES
+};
